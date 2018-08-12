@@ -17,6 +17,11 @@ bot.on('ready', () => {
     bot.user.setActivity(`${bot.guilds.size} servers.`, {type: "WATCHING"});
 });
 
+bot.on("guildMemberRemove", member => {
+    bot.channels.get("460664617996386304").setName(`✸ Użytkownicy: ${member.guild.memberCount}`);
+    bot.channels.get("467380660189921280").setName(`✸ Botów: ${member.guild.members.filter(m => m.user.bot).size}`);
+});
+
 bot.on("message", async message => {
 
     if(message.author.bot) return;
@@ -59,6 +64,11 @@ bot.on("message", async message => {
         else { x = "O"; }
 
         message.channel.send(x + y);
+    }
+    
+    if(cmd === `${prefix}statsa`){
+        bot.channels.get("460664617996386304").setName(`✸ Użytkownicy: ${member.guild.memberCount}`);
+        bot.channels.get("467380660189921280").setName(`✸ Botów: ${member.guild.members.filter(m => m.user.bot).size}`);
     }
 
     if(cmd === `${prefix}kill`){
