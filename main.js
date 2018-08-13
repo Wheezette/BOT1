@@ -256,23 +256,6 @@ bot.on("message", async message => {
         //if (err) console.error(err);
     //})
 
-    if(cmd === `${prefix}post`){
-        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        let postArgs = args.join(" ");
-        const postEmbed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .addField("New post!", postArgs)
-        .setFooter(`Posted by ${message.author.tag}`)
-
-        //if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Mhm... You did not enter the content of the post!`);
-        let postmsg = await message.channel.send(postEmbed);
-        postmsg.react(bot.emojis.find(`name`, 'like'));
-        postmsg.react(bot.emojis.find(`name`, 'heartreact'));
-        message.delete();
-        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **post** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
-    }
-
     if(cmd === `${prefix}eval`){
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         if(message.author.id !== '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `developer` permissions, check them using `cb!permissions`.")
@@ -315,8 +298,8 @@ bot.on("message", async message => {
         .setColor('RANDOM')
         .setTitle('My commands')
         .setDescription("See my commands, they are below!")
-        .addField('Basic (5):', '`invite`, `info`, `help`, ~~`serverlist`~~, `permissions`')
-        .addField('Fun (6):', '`ascii`, `reverse`, `choose`, `avatar`, `hug`, `8ball`, `wheel`')
+        .addField('Basic (3):', '`invite`, ~~`info`~~, `help`, ~~`serverlist`~~, `permissions`')
+        .addField('Fun (9):', '`ascii`, `reverse`, `choose`, `avatar`, `hug`, `8ball`, `wheel`, `bingo`, `say`')
         .addField('Administrative (9):', '`ban`, ~~`kick`~~, `votekick`, `survey`, `addrole`, `removerole`, `channel`, `setprefix`, `setSuggestChannel`, `clear`')
         .addField('Images (1):', '`cat`, ~~`dog`~~, ~~`nutella`~~')
         .addField('Information (2):', '`server`, `profile`')
