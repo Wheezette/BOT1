@@ -127,7 +127,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}say`){
         //message.delete();
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MESSAGES` permissions."`)
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MESSAGES` permissions.")
         if (args[0].includes('@everyone')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You will not use a bot for this purpose! You are not a good user!`);
         if (args[0].includes('@here')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You will not use a bot for this purpose! You are not a good user!`);
         let sayMessage = args.join(" ");
