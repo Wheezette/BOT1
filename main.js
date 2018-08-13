@@ -5,11 +5,7 @@ const ascii = require("ascii-art");
 const moment = require("moment");
 const fs = require("fs");
 const ms = require("ms");
-//const coins = require("./coins.json");
 const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
-//let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
-//let userData = JSON.parse(fs.readFileSync('Storage/userData.json', `utf8`));
-//let suggestChannel = JSON.parse(fs.readFileSync('Storage/suggestChannel.json', 'utf8'));
 
 bot.on('ready', () => {
     console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
@@ -17,15 +13,9 @@ bot.on('ready', () => {
     bot.user.setActivity(`${bot.guilds.size} servers.`, {type: "WATCHING"});
 });
 
-bot.on("guildMemberRemove", member => {
-    bot.channels.get("460664617996386304").setName(`✸ Użytkownicy: ${member.guild.memberCount}`);
-    bot.channels.get("467380660189921280").setName(`✸ Botów: ${member.guild.members.filter(m => m.user.bot).size}`);
-});
-
 bot.on("message", async message => {
 
     if(message.author.bot) return;
-    //if(message.author.id === '396284197389729793') return message.channel.send('Masz bana w bocie');
     if(message.channel.type === "dm") return;
   
     let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
@@ -66,9 +56,9 @@ bot.on("message", async message => {
         message.channel.send(x + y);
     }
     
-    if(cmd === `${prefix}statsa`){
-        bot.channels.get("460664617996386304").setName(`✸ Użytkownicy: ${member.guild.memberCount}`);
-        bot.channels.get("467380660189921280").setName(`✸ Botów: ${member.guild.members.filter(m => m.user.bot).size}`);
+    if(cmd === `${prefix}statsrefresh`){
+        bot.channels.get("478297357046382592").setName(`✸ Użytkownicy: ${message.guild.memberCount}`);
+        bot.channels.get("478297464810635279").setName(`✸ Botów: ${message.guild.members.filter(m => m.user.bot).size}`);
     }
 
     if(cmd === `${prefix}kill`){
