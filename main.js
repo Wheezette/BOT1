@@ -127,7 +127,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}say`){
         //message.delete();
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`Nie masz uprawnien!`)
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MESSAGES` permissions."`)
         if (args[0].includes('@everyone')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You will not use a bot for this purpose! You are not a good user!`);
         if (args[0].includes('@here')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You will not use a bot for this purpose! You are not a good user!`);
         let sayMessage = args.join(" ");
@@ -437,7 +437,7 @@ bot.on("message", async message => {
         let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
         if(!rMember) return message.channel.send(`${bot.emojis.find(`name`, 'error')} You must enter the correct user!`);
         let role = args.join(" ").slice(22);
-        message.channel.send(`${bot.emojis.find(`name`, 'error')} You must provide a role (give its name, it can not be a mention)`);
+        //message.channel.send(`${bot.emojis.find(`name`, 'error')} You must provide a role (give its name, it can not be a mention)`);
         let gRole = message.guild.roles.find(`name`, role);
         if(!gRole) return message.channel.send(`${bot.emojis.find(`name`, 'error')} The role you entered was not found.`);
 
