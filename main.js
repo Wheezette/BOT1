@@ -466,7 +466,7 @@ bot.on("message", async message => {
         let math = Math.floor((Math.random() * huglinks.length));
         let hugEmbed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setTitle(`${bot.emojis.find(`name`, 'like1')} User ${message.author.tag} hugged ${aUser.tag}.`)
+        .setAuthor(`${bot.emojis.find(`name`, 'like1')} User ${message.author.tag} hugged ${aUser.tag}.`)
         .setImage(huglinks[math])
 
         if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You do not have friends ;(`);
