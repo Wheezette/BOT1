@@ -70,25 +70,25 @@ bot.on("message", async message => {
     }
 
     if(cmd === `${prefix}votekick`){
-        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `KICK_MEMBERS` permissions.");
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz uprawnień do tej komendy. Musisz mieć uprawnienie `KICK_MEMBERS`, aby tego użyć.");
         const agree    = "✅";
         const disagree = "❎";
 
         if (message.mentions.users.size === 0){
-            return message.channel.send(`${bot.emojis.find(`name`, 'error')} ` + "You must mention the correct user, otherwise it will not work!");
+            return message.channel.send(`${bot.emojis.find(`name`, 'error')} ` + "Popraw użytkownika, iż nie wpisałeś go poprawie.");
         }
         
         let kickmember = message.guild.member(message.mentions.users.first());
 
         if(!kickmember){
-            message.channel.send(`${bot.emojis.find(`name`, 'error')} ` + "The user you selected was not found!");
+            message.channel.send(`${bot.emojis.find(`name`, 'error')} ` + "Wybrany użytkownik nie istnieje!");
         }
         
         if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")){
-            return message.reply(`${bot.emojis.find(`name`, 'error')} ` + "I do not have the permission of `KICK_MEMBERS`, you have to add it to me otherwise the command will not work!").catch(console.error);
+            return message.reply(`${bot.emojis.find(`name`, 'error')} ` + "Ej?! Dodaj mi uprawnienia `KICK_MEMBERS`, bo inaczej komenda nie zadziała!").catch(console.error);
         }
         
-        let msg = await message.channel.send(`${bot.emojis.find(`name`, 'alert')} Voting for kicking a **${kickmember}** user out of the server, vote by clicking the appropriate reaction. (10 sec.)`);
+        let msg = await message.channel.send(`${bot.emojis.find(`name`, 'alert')} Głosowanie o wyrzucenie użytkownika **${kickmember}** z serwera, aby zagłosować kliknij w odpowiednią reakcję. (10 sek.)`);
         
         await msg.react(agree);
         await msg.react(disagree);
@@ -107,7 +107,7 @@ bot.on("message", async message => {
         }
         
         var sumsum = new Discord.RichEmbed()
-        .addField("The voting has been completed, here are the results:", `~~----------------------------------------~~\n${bot.emojis.find(`name`, 'error')} Votes for NO: ${NO_Count-1}\n${bot.emojis.find(`name`, 'success')} Votes for YES: ${YES_Count-1}\nNOTE: Votes needed to kick (3+)\n~~----------------------------------------~~`)
+        .addField("Głosowanie zakończone, oto wyniki:", `~~----------------------------------------~~\n${bot.emojis.find(`name`, 'error')} Głosy na nie: ${NO_Count-1}\n${bot.emojis.find(`name`, 'success')} Głosy na tak: ${YES_Count-1}\nNOTE: Wymagane głosy na wyrzucenie (3+)\n~~----------------------------------------~~`)
         .setColor("RANDOM")
         
         await message.channel.send(sumsum);
@@ -115,28 +115,28 @@ bot.on("message", async message => {
         if(YES_Count >= 4 && YES_Count > NO_Count){
         
             kickmember.kick().then(member => {
-                message.reply(`${bot.emojis.find(`name`, 'success')} ${member.user.username} was succesfully kicked`)
+                message.reply(`${bot.emojis.find(`name`, 'success')} ${member.user.username} został(a) poprawnie wyrzucony(a).`)
         })
         
         }else{
         
-        message.channel.send("\n" + `${bot.emojis.find(`name`, 'error')} The user has not been kicked!`);
+        message.channel.send("\n" + `${bot.emojis.find(`name`, 'error')} Użytkownik nie zosał wyrzucony!`);
         
         }
     }
 
     if(cmd === `${prefix}say`){
         //message.delete();
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MESSAGES` permissions.")
-        if (args[0].includes('@everyone')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You will not use a bot for this purpose! You are not a good user!`);
-        if (args[0].includes('@here')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} You will not use a bot for this purpose! You are not a good user!`);
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz do tego uprawnień. Musisz mieć uprawnienie `MANAGE_MESSAGES`, aby użyć tej komendy.")
+        if (args[0].includes('@everyone')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Co ty chcesz zrobić? Napewno wszystkich nie oznaczysz, nie ma opcji.`);
+        if (args[0].includes('@here')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Co ty chcesz zrobić? Napewno wszystkich nie oznaczysz, nie ma opcji.`);
         let sayMessage = args.join(" ");
         message.delete();
         message.channel.send(sayMessage);
     }
 
     if(cmd === `<@458569537286176768>`){
-        message.channel.send(`${bot.emojis.find(`name`, 'question')} What do you want from me? As for my prefix, you have: ` + "`" + `${prefix}` + "`");
+        message.channel.send(`${bot.emojis.find(`name`, 'question')} Słucham, o co chodzi? Mój prefix to: ` + "`" + `${prefix}` + "`");
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
         cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has mention the bot on the **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
@@ -146,7 +146,7 @@ bot.on("message", async message => {
         ascii.font(args.join(' '), 'Doom', function(rendered) {
           rendered = rendered.trimRight();
     
-          if(rendered.length > 2000) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Unfortunately, but I can't write this message in ascii... It is too long!`);
+          if(rendered.length > 2000) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Wooo.. Ta wiadomość jest zadługa i nie dam jej do ascii!`);
           message.channel.send(rendered, {
             code: 'md'
           });
@@ -189,16 +189,16 @@ bot.on("message", async message => {
         let aUser = message.mentions.users.first() || message.author;
         const userinfo = new Discord.RichEmbed()
         .setColor("FFA07A")
-        .setAuthor(`${aUser.username}'s profile`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
+        .setAuthor(`Profil ${aUser.username}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
         .setThumbnail(aUser.displayAvatarURL)
         .addField("ID:", `${aUser.id}`)
-        .addField("Nickname:", `${aUser.nickname ? aUser.nickname : "None"}`)
-        .addField("Account created:", `${moment.utc(aUser.createdAt).format('dd, Do MM YYYY')}`)
-        .addField("Joined the server:", `${moment.utc(aUser.joinedAt).format('dd, Do MM YYYY')}`)
-        .addField("It is a bot::", `${aUser.bot}`)
+        .addField("Pseudonim:", `${aUser.nickname ? aUser.nickname : "Brak"}`)
+        .addField("Konto utworzone:", `${moment.utc(aUser.createdAt).format('dd, Do MM YYYY')}`)
+        .addField("Dołączył(a) do serwea:", `${moment.utc(aUser.joinedAt).format('dd, Do MM YYYY')}`)
+        .addField("Jest botem:", `${aUser.bot}`)
         .addField("Status:", `${aUser.presence.status.replace("dnd", "Do Not Disturb")}`)
-        .addField("Game:", `${aUser.presence.game ? aUser.presence.game.name : 'He does not play'}`)
-        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Used by ${message.author.tag}.`)
+        .addField("Gra:", `${aUser.presence.game ? aUser.presence.game.name : 'Żadna'}`)
+        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto przez ${message.author.tag}.`)
         message.channel.send(userinfo);
     }
 
@@ -208,18 +208,18 @@ bot.on("message", async message => {
         let sicon = message.guild.iconURL;
         let serverembed = new Discord.RichEmbed()
         .setColor("FFA07A")
-        .setAuthor(`Server ${message.guild.name}`, `https://cdn.discordapp.com/emojis/473897310414176266.png?v=1`)
+        .setAuthor(`${message.guild.name}`, `https://cdn.discordapp.com/emojis/473897310414176266.png?v=1`)
         .setThumbnail(sicon)
         //.addField("Name:", message.guild.name)
-        .addField("Server created:", `${moment.utc(message.guild.createdAt).format('dd, Do MM YYYY')}`)
-        .addField("You joined:",`${moment.utc(message.author.joinedAt).format('dd, Do MM YYYY')}`)
-        .addField("Number of users::", message.guild.memberCount)
+        .addField("Utworzony:", `${moment.utc(message.guild.createdAt).format('dd, Do MM YYYY')}`)
+        .addField("Dołączyłeś(aś):",`${moment.utc(message.author.joinedAt).format('dd, Do MM YYYY')}`)
+        .addField("Liczba użytkowników:", message.guild.memberCount)
         .addField("Region:", `${message.guild.region.replace("eu-central", ":flag_eu: EU Central")}`)
-        .addField("Text channels:", message.guild.channels.findAll("type", "text").length)
-        .addField("Voice channels:", message.guild.channels.findAll("type", "voice").length)
-        .addField("Roles:", `${message.guild.roles.size} (Full list of roles under the **${prefix}roles** command.)`)
-        .addField("Emojis:", message.guild.emojis.size)
-        .addField("Owner:", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+        .addField("Kanały tekstowe:", message.guild.channels.findAll("type", "text").length)
+        .addField("Kanały głosowe:", message.guild.channels.findAll("type", "voice").length)
+        .addField("Role:", `${message.guild.roles.size} (Full list of roles under the **${prefix}roles** command.)`)
+        .addField("Emotki:", message.guild.emojis.size)
+        .addField("Właściciel(ka):", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Used by ${message.author.tag}.`);
     
         message.channel.send(serverembed);
@@ -227,13 +227,13 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}channel`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_CHANNELS` permissions.");
+        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie możesz tego użyć. Musisz mieć uprawnienie `MANAGE_CHANNELS`, aby użyć tej komendy.");
         let channelname = args.slice(1).join(" ");
         let everyone = message.guild.roles.find(`name`, "@everyone");
-        if(args[0] == 'lock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: false, ADD_REACTIONS: false }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Okay, according to your wishes, I blocked this channel! Others can not write here.`);
-        if(args[0] == 'unlock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: true, ADD_REACTIONS: true }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Okay, according to your wishes, I unblocked this channel! Others can write here already.`);
-        if(args[0] == 'setname') return message.channel.edit({ name: `${channelname}` }), message.channel.send(`${bot.emojis.find(`name`, 'success')} The channel name has been successfully changed to: ${channelname}`);
-        if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} The correct use of this command: ` + "`cb!channel <lock/unlock/setname>`.")
+        if(args[0] == 'lock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: false, ADD_REACTIONS: false }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Tak jest! Kanał został zablokowany, inni użytkownicy już tu nie będą pisać!`);
+        if(args[0] == 'unlock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: true, ADD_REACTIONS: true }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Tak jest! Kanał został ponownie odblokowany, inni użytkownicy znów mogą pisać!`);
+        if(args[0] == 'setname') return message.channel.edit({ name: `${channelname}` }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Nazwa kanału została pomyślnie zmieniona na: ${channelname}`);
+        if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Poprawne użycie tego polecenia: ` + "`cb!channel <lock/unlock/setname>`.")
         //if(args[0] == 'setname') return message.channel.setName(channelname), message.channel.send(`${bot.emojis.find(`name`, 'success')} Mmm... You asked for a channel name change. It has been done! The new name of this channel is: **${channelname}**.`);
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
         cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **channel** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
@@ -258,15 +258,15 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}eval`){
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(message.author.id !== '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `developer` permissions, check them using `cb!permissions`.")
-        if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')}` + " Please, give me the code. If you do not know how to use the command, use `cb!help eval`.")
+        if(message.author.id !== '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz dostępu do tego polecenia. Musisz posiadać uprawnienia `developer` w bocie, sprawdz jakie masz poprzez `cb!permissions`.")
+        if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')}` + " Proszę, abyś podał(a) kod, który chcesz evalować. Jeśli nie wiesz o co chodzi, wpisz `cb!help eval`.")
         let result = eval(args.join(" ")).toString()
           let embed = new Discord.RichEmbed()
           //.setTitle("Eval")
-          .addField(`${bot.emojis.find(`name`, 'jsonfile')} INPUT`, "```"+args.join(" ")+"```")
-          .addField(`${bot.emojis.find(`name`, 'txt')} OUTPUT`, "```"+result+"```")
+          .addField(`${bot.emojis.find(`name`, 'jsonfile')} Wejście`, "```"+args.join(" ")+"```")
+          .addField(`${bot.emojis.find(`name`, 'txt')} Wyjście`, "```"+result+"```")
           .setColor("RANDOM")
-          .setFooter(`The eval was used by ${message.author.tag}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
+          .setFooter(`Kod evalował(a) ${message.author.tag}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
           message.channel.send(embed);
     }
 
@@ -275,7 +275,7 @@ bot.on("message", async message => {
           let nowaNazwa = args.join(" ");
           bot.user.setUsername(nowaNazwa);
           console.log(`Nick został zmieniony.`);
-          message.channel.send(`${bot.emojis.find(`name`, 'success')} The name of the bot has been changed to: **${nowaNazwa}**.`);
+          message.channel.send(`${bot.emojis.find(`name`, 'success')} Nazwa bota została zmieniona na: **${nowaNazwa}**.`);
         }
         //let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
         //cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **botsetname** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
@@ -286,7 +286,7 @@ bot.on("message", async message => {
           let nowyAvatar = args.join(" ");
           bot.user.setAvatar(nowyAvatar);
           console.log(`Avatar został zmieniony.`);
-          message.channel.send(`${bot.emojis.find(`name`, 'success')} The avatar of the bot has been changed to: **${nowyAvatar}**.`);
+          message.channel.send(`${bot.emojis.find(`name`, 'success')} Avatar bota został zmieniony na: **${nowyAvatar}**.`);
         }
         //let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
         //cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **botsetavatar** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
@@ -296,15 +296,15 @@ bot.on("message", async message => {
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         const helpmsg = new Discord.RichEmbed()
         .setColor('RANDOM')
-        .setTitle('My commands')
-        .setDescription("See my commands, they are below!")
-        .addField('Basic (3):', '`invite`, ~~`info`~~, `help`, ~~`serverlist`~~, `permissions`')
+        .setTitle('Moje polecenia')
+        .setDescription("Moje komendy są naprawde super, znajdziesz je poniżej!")
+        .addField('Basic (3):', '`invite`, ~~`info`~~, `help`, `permissions`')
         .addField('Fun (9):', '`ascii`, `reverse`, `choose`, `avatar`, `hug`, `8ball`, `wheel`, `bingo`, `say`')
         .addField('Administrative (9):', '`ban`, ~~`kick`~~, `votekick`, `survey`, `addrole`, `removerole`, `channel`, `setprefix`, `setSuggestChannel`, `clear`')
         .addField('Images (1):', '`cat`, ~~`dog`~~, ~~`nutella`~~')
         .addField('Information (2):', '`server`, `profile`')
         .addField('Other (1):', '`suggest`')
-        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Used by ${message.author.tag}.`)
+        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto przez ${message.author.tag}.`)
         if(!args[0]) return message.channel.send(helpmsg);
         if(args[0] == 'invite') return message.channel.send('Help with the **INVITE** command. \n```Usage: ' + `${prefix}invite` + '``` \n**Aliases:** None \n**Description:** After entering this command you will see a link to the help server with the bot and a link to invite it to your server!');
         if(args[0] == 'info') return message.channel.send('Help with the **INFO** command. \n```Usage: ' + `${prefix}info` + '``` \n**Aliases:** None \n**Description:** It will display information about the bot.');
@@ -322,34 +322,34 @@ bot.on("message", async message => {
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let newsEmbed = new Discord.RichEmbed()
         .setColor('RANDOM')
-        .setTitle('New information!')
-        .setDescription(`New bot commands! Bot has gained many new commands, they have already appeared in **${prefix}help**!`)
-        .setFooter('Sent by xCookieTM#9613')
+        .setTitle('NOWE INFO!')
+        .setDescription(`Bot został zmieniony całkowicie na Polski!`)
+        .setFooter('Wysłano przez xCookieTM#9613')
         message.channel.send(newsEmbed);
     }
 
     if(cmd === `${prefix}ban`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!bUser) return message.channel.send(":x: You must mark the correct user!");
+        if(!bUser) return message.channel.send(":x: Podaj poprawnego użytkownika, musi to być mention.");
         let bReason = args.join(" ").slice(22);
-        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(":lock: You do not have permission to use this!");
-        if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":lock: This user can not be banned!");
-        if(!args[0]) return message.channel.send(`Ehh... Have you not given the user or the reason? This and that? Use ` + "`" + `${prefix}help ban` + "`" + `  command for help!`);
+        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(":lock: Nie masz uprawnień do korzystania z tej komendy, jeszcze brakuje Ci `MANAGE_MEMBERS`.");
+        if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":lock: Nie możesz go/jej zbanować.");
+        if(!args[0]) return message.channel.send(`Ehh... Nie podałeś(aś) powodu bana, niestety, ale musisz go podać.`);
     
         let banEmbed = new Discord.RichEmbed()
         .setColor("RANDOM")
         .setAuthor(`[BAN] ${bUser.tag}`, `${bUser.displayAvatarURL}`)
         .addField("Moderator:", `<@${message.author.id}>, id ${message.author.id}`)
-        .addField("On channel:", message.channel)
-        .addField("Reason:", bReason)
-        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Used on ${message.guild.name} server.`)
+        .addField("Kanał:", message.channel)
+        .addField("Powód:", bReason)
+        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto na ${message.guild.name}.`)
         //.setAuthor(`${bUser.user.tag}, ${bUser.id}`, `${bUser.user.displayAvatarURL}`);
     
         let modlogi = message.guild.channels.find(`name`, "modlogs");
-        if(!modlogi) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} The '**modlogs**' channel does not exist, but the **${bUser}** user got the ban anyway!`), message.guild.member(bUser).ban(bReason);
+        if(!modlogi) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Kanał "**modlogi**" nie istnieje, ale to nic nie szkodzi. Użytkownik **${bUser}** został zbanowany(a)`), message.guild.member(bUser).ban(bReason);
         
-        message.channel.send(`${bot.emojis.find(`name`, 'success')} User ${bUser} has been banned for ${bReason}.`)
+        message.channel.send(`${bot.emojis.find(`name`, 'success')} $bUser} has been banned for ${bReason}.`)
         message.guild.member(bUser).ban(bReason);
         modlogi.send(banEmbed);
     
