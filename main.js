@@ -10,7 +10,7 @@ const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 bot.on('ready', () => {
     console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
     bot.user.setStatus(`dnd`);
-    bot.user.setActivity(`${bot.guilds.size} servers.`, {type: "WATCHING"});
+    bot.user.setActivity(`cb!help | ${bot.guilds.size} serwerów.`, {type: "WATCHING"});
 });
 
 bot.on("message", async message => {
@@ -63,9 +63,9 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}kill`){
         let aUser = message.mentions.users.first() || message.author || message.user.id;
-        message.channel.send(`${bot.emojis.find(`name`, 'alert')} **${aUser.tag}** has been killed by **${message.author.tag}**!`).then(Message => {
-            setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} Respawning...`); }, 1000);
-            setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} This user was born again! Welcome back, ${aUser.tag}`); }, 1000);
+        message.channel.send(`${bot.emojis.find(`name`, 'alert')} **${aUser.tag}** został(a) zabity(a) przez **${message.author.tag}**!`).then(Message => {
+            setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} Odradzanie...`); }, 1000);
+            setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} Użtlownik narodził się znów. Witamy ponownie, ${aUser.tag}`); }, 1000);
         });
     }
 
