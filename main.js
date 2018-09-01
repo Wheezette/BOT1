@@ -200,9 +200,6 @@ bot.on("message", async message => {
         .addField("Gra:", `${aUser.presence.game ? aUser.presence.game.name : 'Żadna'}`)
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto przez ${message.author.tag}.`)
         message.channel.send(userinfo);
-        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **profile** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
-  
     }
 
     if(cmd === `${prefix}server` || cmd === `${prefix}server-info` || cmd === `${prefix}serverinfo`){
@@ -226,8 +223,6 @@ bot.on("message", async message => {
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Used by ${message.author.tag}.`);
     
         message.channel.send(serverembed);
-        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **serverinfo** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
 
     if(cmd === `${prefix}channel`){
