@@ -64,7 +64,7 @@ bot.on("message", async message => {
     if(cmd === `${prefix}kill`){
         let aUser = message.mentions.users.first() || message.author || message.user.id;
         message.channel.send(`${bot.emojis.find(`name`, 'alert')} **${aUser.tag}** został(a) zabity(a) przez **${message.author.tag}**!`).then(Message => {
-            setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} Odradzanie...`); }, 7000);
+            setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} Odradzanie...`); }, 1000);
             setTimeout(() => { Message.edit(`${bot.emojis.find(`name`, 'alert')} Użtlownik narodził się znów. Witamy ponownie, ${aUser.tag}`); }, 1000);
         });
     }
@@ -684,7 +684,7 @@ bot.on("message", async message => {
         let newTicketChannel = await message.guild.createChannel(`request-${message.author.id}`);
         let ticketEmbed = new Discord.RichEmbed()
         .addField('Prośba o pomoc', `**STWORZONE PRZEZ:** ${message.author.tag} \n**TRESC ZGLOSZENIA:** ${helpText}`)
-        .addField('Uwaga!', 'Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.')
+        .addField(`${bot.emojis.find(`name`, 'alert')`, 'Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.')
         let tChanelSend = await newTicketChannel.send(ticketEmbed);
         let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
         newTicketChannel.overwritePermissions(everyone, { SEND_MESSAGES: false, READ_MESSAGES: false });
