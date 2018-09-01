@@ -258,7 +258,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}eval`){
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(message.author.id !== '396284197389729793', '358901906170445835') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz dostępu do tego polecenia. Musisz posiadać uprawnienia `developer` w bocie, sprawdz jakie masz poprzez `cb!permissions`.")
+        if(message.author.id !== '358901906170445835', '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz dostępu do tego polecenia. Musisz posiadać uprawnienia `developer` w bocie, sprawdz jakie masz poprzez `cb!permissions`.")
         if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')}` + " Proszę, abyś podał(a) kod, który chcesz evalować. Jeśli nie wiesz o co chodzi, wpisz `cb!help eval`.")
         let result = eval(args.join(" ")).toString()
           let embed = new Discord.RichEmbed()
