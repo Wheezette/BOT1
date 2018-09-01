@@ -120,7 +120,7 @@ bot.on("message", async message => {
         
         }else{
         
-        message.channel.send("\n" + `${bot.emojis.find(`name`, 'error')} Użytkownik nie zosał wyrzucony!`);
+        message.channel.send("\n" + `${bot.emojis.find(`name`, 'error')} Użytkownik nie zosał wyrzucony!**Być może bot ma za niskie permisje, aby go wyrzucić!**`);
         
         }
     }
