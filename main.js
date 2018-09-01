@@ -140,6 +140,12 @@ bot.on("message", async message => {
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
         cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has mention the bot on the **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
+    
+    if(cmd === `<@358901906170445835>`){
+        message.channel.send(`${bot.emojis.find(`name`, 'error')} Pamiętaj! Nie oznaczaj Developerów bota jeśli nie jest to ważne");
+        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) oznaczył developera BOTa na serwerze **${message.guild.name}**(**${message.guild.id}**).`);
+    }
 
     if(cmd === `${prefix}ascii`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
