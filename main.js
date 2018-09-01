@@ -323,8 +323,8 @@ bot.on("message", async message => {
         let newsEmbed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle('NOWE INFO!')
-        .setDescription(`Bot został zmieniony całkowicie na Polski!`)
-        .setFooter('Wysłano przez xCookieTM#9613')
+        .setDescription(`Zmieniono prefix bota na **!**, cały czas pracujemy nad jego błędami! Bot może być dzisiaj niedostępny kilka razy przez całkowite przepisywanie komend.`)
+        .setFooter('Wysłano przez Blackuu#8732')
         message.channel.send(newsEmbed);
     }
 
