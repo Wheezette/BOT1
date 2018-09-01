@@ -138,27 +138,21 @@ bot.on("message", async message => {
     if(cmd === `<@458569537286176768>`){
         message.channel.send(`${bot.emojis.find(`name`, 'question')} Słucham, o co chodzi? Mój prefix to: ` + "`" + `${prefix}` + "`");
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has mention the bot on the **${message.guild.name}**(**${message.guild.id}**) server.`);
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) oznaczył bota na serwerze **${message.guild.name}**(**${message.guild.id}**).`);
     }
     
-    if(cmd === `<@358901906170445835>`){
-        message.channel.send(`${bot.emojis.find(`name`, 'error')} Pamiętaj! Nie oznaczaj Developerów bota jeśli nie jest to ważne");
-        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) oznaczył developera BOTa na serwerze **${message.guild.name}**(**${message.guild.id}**).`);
-    }
-
     if(cmd === `${prefix}ascii`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         ascii.font(args.join(' '), 'Doom', function(rendered) {
           rendered = rendered.trimRight();
     
-          if(rendered.length > 2000) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Wooo.. Ta wiadomość jest zadługa i nie dam jej do ascii!`);
+          if(rendered.length > 2000) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Wooo.. Ta wiadomość jest za długa i nie dam jej do ascii!`);
           message.channel.send(rendered, {
             code: 'md'
           });
         })
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **ascii** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **ascii** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
 
     if(cmd === `${prefix}roles`){
@@ -169,7 +163,7 @@ bot.on("message", async message => {
         .addField("List of roles:", rolesList)
         message.channel.send(rolesEmbed);
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **roles** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **roles** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
 
     //if (!userData[sender.id]) userData[sender.id] = {
@@ -206,6 +200,9 @@ bot.on("message", async message => {
         .addField("Gra:", `${aUser.presence.game ? aUser.presence.game.name : 'Żadna'}`)
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto przez ${message.author.tag}.`)
         message.channel.send(userinfo);
+        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **profile** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
+  
     }
 
     if(cmd === `${prefix}server` || cmd === `${prefix}server-info` || cmd === `${prefix}serverinfo`){
@@ -229,6 +226,8 @@ bot.on("message", async message => {
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Used by ${message.author.tag}.`);
     
         message.channel.send(serverembed);
+        let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **serverinfo** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
 
     if(cmd === `${prefix}channel`){
@@ -242,7 +241,7 @@ bot.on("message", async message => {
         if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Poprawne użycie tego polecenia: ` + "`cb!channel <lock/unlock/setname>`.")
         //if(args[0] == 'setname') return message.channel.setName(channelname), message.channel.send(`${bot.emojis.find(`name`, 'success')} Mmm... You asked for a channel name change. It has been done! The new name of this channel is: **${channelname}**.`);
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
-        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **channel** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
+        cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) użył komendy **channel** na serwerze **${message.guild.name}**(**${message.guild.id}**) server.`);
     }
 
    // if(cmd === `${prefix}webhook`){
