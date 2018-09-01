@@ -258,7 +258,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}eval`){
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(message.author.id !== '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz dostępu do tego polecenia. Musisz posiadać uprawnienia `developer` w bocie, sprawdz jakie masz poprzez `cb!permissions`.")
+        if(message.author.id !== '396284197389729793', '358901906170445835') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz dostępu do tego polecenia. Musisz posiadać uprawnienia `developer` w bocie, sprawdz jakie masz poprzez `cb!permissions`.")
         if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')}` + " Proszę, abyś podał(a) kod, który chcesz evalować. Jeśli nie wiesz o co chodzi, wpisz `cb!help eval`.")
         let result = eval(args.join(" ")).toString()
           let embed = new Discord.RichEmbed()
@@ -322,7 +322,7 @@ bot.on("message", async message => {
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let newsEmbed = new Discord.RichEmbed()
         .setColor('42f4ee')
-        .setTitle('NOWE INFO!')
+        .setTitle('Informacja od Administracji BOTa')
         .setDescription(`Zmieniono prefix bota na **!**, cały czas pracujemy nad jego błędami! Bot może być dzisiaj niedostępny kilka razy przez całkowite przepisywanie komend.`)
         .setFooter('Wysłano przez Blackuu#8732')
         message.channel.send(newsEmbed);
@@ -684,7 +684,7 @@ bot.on("message", async message => {
         let newTicketChannel = await message.guild.createChannel(`request-${message.author.id}`);
         let ticketEmbed = new Discord.RichEmbed()
         .addField('Prośba o pomoc', `**STWORZONE PRZEZ:** ${message.author.tag} \n**TRESC ZGLOSZENIA:** ${helpText}`)
-        .addField(`Uwaga!)`, 'Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.')
+        .addField(`Uwaga!`, 'Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.')
         let tChanelSend = await newTicketChannel.send(ticketEmbed);
         let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
         newTicketChannel.overwritePermissions(everyone, { SEND_MESSAGES: false, READ_MESSAGES: false });
