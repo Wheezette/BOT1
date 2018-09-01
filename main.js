@@ -384,7 +384,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}permissions`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if (message.author.id === '396284197389729793' or '358901906170445835') return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień to: `Twórca CookieBOT` (5)");
+        if (message.author.id === '396284197389729793','358901906170445835') return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień to: `Twórca CookieBOT` (5)");
         if (message.author.id === '372026600989917195') return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień to: `Globalny Support` (4)")
         //if (message.guild.owner) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Your permission level is: `Server Owner` (3)");
         if (message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień to: `Administrator Serwera` (2)");
