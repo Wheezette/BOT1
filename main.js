@@ -684,7 +684,7 @@ bot.on("message", async message => {
         let newTicketChannel = await message.guild.createChannel(`request-${message.author.id}`);
         let ticketEmbed = new Discord.RichEmbed()
         .addField('Request for help!', `**CREATED BY:** ${message.author.tag} \n**TRESC ZGLOSZENIA:** ${helpText}`)
-        .addField('Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.`)
+        .addField('Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.')
         let tChanelSend = await newTicketChannel.send(ticketEmbed);
         let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
         newTicketChannel.overwritePermissions(everyone, { SEND_MESSAGES: false, READ_MESSAGES: false });
