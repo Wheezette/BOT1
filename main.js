@@ -683,17 +683,18 @@ bot.on("message", async message => {
         let helpText = args.join(" ");
         let newTicketChannel = await message.guild.createChannel(`request-${message.author.id}`);
         let ticketEmbed = new Discord.RichEmbed()
-        .addField('Request for help!', `**CREATED BY:** ${message.author.tag} \n**CONTENT:** ${helpText} \nAfter completing the help, the administration or the user waiting for help should react to the react below.`)
+        .addField('Request for help!', `**CREATED BY:** ${message.author.tag} \n**TRESC ZGLOSZENIA:** ${helpText}`)
+        .addField('Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.`)
         let tChanelSend = await newTicketChannel.send(ticketEmbed);
-        let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('lol') });
+        let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
         newTicketChannel.overwritePermissions(everyone, { SEND_MESSAGES: false, READ_MESSAGES: false });
         newTicketChannel.overwritePermissions(ticketCreator, { SEND_MESSAGES: true, READ_MESSAGES: true })
-        message.channel.send(`${bot.emojis.find(`name`, 'success')} Your request for help is ready, wait for a response from the administration on the **${newTicketChannel}** channel`);
+        message.channel.send(`${bot.emojis.find(`name`, 'success')} Twoja prośba o pomoc jest gotowa, poczekaj na odpowiedź od administracji na kanale **${newTicketChannel}** `);
         const filter = (reaction, user) => (reaction.emoji.name === '🇦') && user.id === message.author.id
         const collector = tChannelSend.createReactionCollector(filter);
         collector.on('collect', r => {
             if (r.emoji.name === "🇦") {
-                message.channel.send('lOl');
+                message.channel.send('Gotowe!');
             }
         });
     }
