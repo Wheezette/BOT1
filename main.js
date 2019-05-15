@@ -685,8 +685,7 @@ bot.on("message", async message => {
         //let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
         newTicketChannel.overwritePermissions(everyone, { SEND_MESSAGES: false, READ_MESSAGES: false });
         newTicketChannel.overwritePermissions(ticketCreator, { SEND_MESSAGES: true, READ_MESSAGES: true })
-        message.channel.send(`${bot.emojis.find(`name`, 'success')} Twoja prośba o pomoc jest gotowa, poczekaj na odpowiedź od administracji na kanale **${newTicketChannel}** `);
-        const filter = (reaction, user) => (reaction.emoji.name === '🇦') && user.id === message.author.id
+        message.channel.send(`Twoja prośba o pomoc jest gotowa, poczekaj na odpowiedź od administracji na kanale **${newTicketChannel}** `);
     }
 
     if(cmd === `${prefix}warn`){
