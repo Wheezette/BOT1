@@ -298,12 +298,12 @@ bot.on("message", async message => {
         .setColor('RANDOM')
         .setTitle('Moje polecenia')
         .setDescription("Moje komendy są naprawde super, znajdziesz je poniżej!")
-        .addField('Basic (3):', '`invite`, ~~`info`~~, `help`, `permissions`')
-        .addField('Fun (9):', '`ascii`, `reverse`, `choose`, `avatar`, `hug`, `8ball`, `wheel`, `bingo`, `say`, `hug`')
-        .addField('Administrative (9):', '`ban`, ~~`kick`~~, `votekick`, `survey`, `addrole`, `removerole`, `channel`, `setprefix`, `setSuggestChannel`, `clear`')
-        .addField('Images (1):', '`cat`')
-        .addField('Information (2):', '`server`, `profile`')
-        .addField('Other (1):', '`propozycja`')
+        .addField('Standard (3):', '~~`info`~~, `help`, `permissions`')
+        .addField('Zabawa (9):', '`ascii`, `reverse`, `choose`, `avatar`, `hug`, `8ball`, `wheel`, `bingo`, `say`, `hug`')
+        .addField('Administracja (9):', '`ban`, ~~`kick`~~, `votekick`, `survey`, `addrole`, `removerole`, `channel`, `setprefix`, `setSuggestChannel`, `clear`')
+        .addField('Zdjęcia (1):', '`cat`')
+        .addField('Informacje (2):', '`server`, `profile`')
+        .addField('Inne (1):', '`propozycja`')
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto przez ${message.author.tag}.`)
         if(!args[0]) return message.channel.send(helpmsg);
         if(args[0] == 'invite') return message.channel.send('Help with the **INVITE** command. \n```Usage: ' + `${prefix}invite` + '``` \n**Aliases:** None \n**Description:** After entering this command you will see a link to the help server with the bot and a link to invite it to your server!');
@@ -356,10 +356,6 @@ bot.on("message", async message => {
         //let logiKomend = bot.channels.get("458569305341296641");
         //logiKomend.send(`Użytkownik: **${message.author.tag}** (**${message.author.id}**) \nUżył komendy **ban** na serwerze **${message.guild.name}**, zbanował **${bUser}** za **${bReason}**.`);
         return;
-    }
-
-    if(cmd === `${prefix}invite`){
-        message.channel.send(`${bot.emojis.find(`name`, 'plus')} Aby zaprosić bota na swój serwer: https://discordapp.com/api/oauth2/authorize?client_id=458569537286176768&permissions=8&scope=bot \n \n${bot.emojis.find(`name`, 'plus')} Jeśli potrzebujesz pomocy, wejdź na serwer pomocy: https://discord.gg/3F7wGx8`);
     }
 
     if(cmd === `${prefix}serverlist9929319238109310901931039010930190391903`){
@@ -681,22 +677,16 @@ bot.on("message", async message => {
         let everyone = message.guild.roles.find(`name`, "@everyone");
         let ticketCreator = message.guild.members.find(`id`, `${message.author.id}`)
         let helpText = args.join(" ");
-        let newTicketChannel = await message.guild.createChannel(`request-${message.author.id}`);
+        let newTicketChannel = await message.guild.channels.get('578229749214609408').createChannel(`pomoc-${message.author.username}`);
         let ticketEmbed = new Discord.RichEmbed()
         .addField('Prośba o pomoc', `**STWORZONE PRZEZ:** ${message.author.tag} \n**TRESC ZGLOSZENIA:** ${helpText}`)
-        .addField(`Uwaga!`, 'Po zakończeniu pomocy administracja lub użytkownik oczekujący na pomoc powinien zareagować na reakcję poniżej.')
+        .addField(`Uwaga!`, 'Po zakończeniu, użytkownik oczekujący na pomoc lub administrator rozpatrujący mogą usunąć ten kanał poprzez komendę ?close.')
         let tChanelSend = await newTicketChannel.send(ticketEmbed);
-        let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
+        //let reactChannel = await tChanelSend.react(bot.emojis.find(`name`, 'success')).then(em => { message.channel.send('Gotowe!') });
         newTicketChannel.overwritePermissions(everyone, { SEND_MESSAGES: false, READ_MESSAGES: false });
         newTicketChannel.overwritePermissions(ticketCreator, { SEND_MESSAGES: true, READ_MESSAGES: true })
         message.channel.send(`${bot.emojis.find(`name`, 'success')} Twoja prośba o pomoc jest gotowa, poczekaj na odpowiedź od administracji na kanale **${newTicketChannel}** `);
         const filter = (reaction, user) => (reaction.emoji.name === '🇦') && user.id === message.author.id
-        const collector = tChannelSend.createReactionCollector(filter);
-        collector.on('collect', r => {
-            if (r.emoji.name === "🇦") {
-                message.channel.send('Gotowe!');
-            }
-        });
     }
 
     if(cmd === `${prefix}warn`){
