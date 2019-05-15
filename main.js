@@ -10,7 +10,7 @@ const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 bot.on('ready', () => {
     console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
     bot.user.setStatus(`dnd`);
-    bot.user.setActivity(`cb!!help | ${bot.guilds.size} serwerów.`, {type: "WATCHING"});
+    bot.user.setActivity(`play.PenguCraft.net`, {type: "WATCHING"});
 });
 
 bot.on("message", async message => {
