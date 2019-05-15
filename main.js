@@ -660,16 +660,16 @@ bot.on("message", async message => {
         let listen = args.slice(1).join(" ");
         let watch = args.slice(1).join(" ");
         let reset = args.slice(1).join(" ");
-          if(!args[0]) return message.channel.send(':x: You must provide a value! Correct use: `cb!rich <game/stream/watch/listen> <text>`');
-          if(args[0] == 'game') return bot.user.setActivity(game),  message.channel.send(`${bot.emojis.find(`name`, 'alert')} Bot started playing in **${game}**.`);
+          if(!args[0]) return message.channel.send('Musisz podać wartość! Poprawne użycie: `?rich <game/stream/watch/listen> <text>`');
+          if(args[0] == 'game') return bot.user.setActivity(game),  message.channel.send(`**(!)** Bot zaczął grać w **${game}**.`);
             //message.channel.send(`:wink: Bot zaczął grać w **${game}**.`);
         //let stream = args.slice(1).join(" ");
-          if(args[0] == 'stream') return bot.user.setGame(`${stream}`, 'https://twitch.tv/xcookietm'), message.channel.send(`${bot.emojis.find(`name`, 'alert')} Bot started broadcasting live **${stream}**.`);
+          if(args[0] == 'stream') return bot.user.setGame(`${stream}`, {type: 'STREAMING'}), message.channel.send(`**(!)** Bot zaczął streamować **${stream}**.`);
             //message.channel.send(`:wink: Bot zaczął nadawać na żywo **${stream}**.`);
-          if(args[0] == 'listen') return bot.user.setActivity(`${listen}`, {type: 'LISTENING'}), message.channel.send(`${bot.emojis.find(`name`, 'alert')} Bot started to listen **${listen}**.`);
-          if(args[0] == 'watch') return bot.user.setActivity(`${watch}`, {type: 'WATCHING'}), message.channel.send(`${bot.emojis.find(`name`, 'alert')} Bot began to watch **${watch}**.`);
-          if(args[0] == 'reset') return bot.user.setActivity(`${reset}`), message.channel.send(`${bot.emojis.find(`name`, 'alert')} The status of the bot has been reset.`);
-          if(args[0] == 'servers') return bot.user.setActivity(`${bot.guilds.size} servers`), message.channel.send(`${bot.emojis.find(`name`, 'alert')} The status of the bot has been set to the number of servers.`);
+          if(args[0] == 'listen') return bot.user.setActivity(`${listen}`, {type: 'LISTENING'}), message.channel.send(`**(!)** Bot zaczął słuchać **${listen}**.`);
+          if(args[0] == 'watch') return bot.user.setActivity(`${watch}`, {type: 'WATCHING'}), message.channel.send(`**(!)** Bot zaczął oglądać **${watch}**.`);
+          if(args[0] == 'reset') return bot.user.setActivity(`${reset}`), message.channel.send(`**(!)** Status bota został zresetowany.`);
+          if(args[0] == 'servers') return bot.user.setActivity(`${bot.guilds.size} serwerów`), message.channel.send(`**(!)** Status bota został ustawiony na ilość serwerów.`);
         }
     }
 
@@ -677,7 +677,7 @@ bot.on("message", async message => {
         let everyone = message.guild.roles.find(`name`, "@everyone");
         let ticketCreator = message.guild.members.find(`id`, `${message.author.id}`)
         let helpText = args.join(" ");
-        let newTicketChannel = await message.guild.channels.get('578229749214609408').createChannel(`pomoc-${message.author.username}`);
+        let newTicketChannel = await message.guild.createChannel(`pomoc-${message.author.username}`);
         let ticketEmbed = new Discord.RichEmbed()
         .addField('Prośba o pomoc', `**STWORZONE PRZEZ:** ${message.author.tag} \n**TRESC ZGLOSZENIA:** ${helpText}`)
         .addField(`Uwaga!`, 'Po zakończeniu, użytkownik oczekujący na pomoc lub administrator rozpatrujący mogą usunąć ten kanał poprzez komendę ?close.')
