@@ -135,7 +135,7 @@ bot.on("message", async message => {
         message.channel.send(sayMessage);
     }
 
-    if(cmd === `<@458569537286176768>`){
+    if(cmd === `<@577931206214156309>`){
         message.channel.send(`${bot.emojis.find(`name`, 'question')} Słucham, o co chodzi? Mój prefix to: ` + "`" + `${prefix}` + "`");
         let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
         cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} Użytkownik **${message.author.tag}**(**${message.author.id}**) oznaczył bota na serwerze **${message.guild.name}**(**${message.guild.id}**).`);
