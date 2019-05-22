@@ -639,7 +639,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}sugestia` || cmd === `${prefix}propozycja`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        let suggestContent = args.join("");
+        let suggestContent = args.join(" ");
         if(!args[0]) return message.channel.send(`**(!)** Musisz podać treść propozycji, inaczej nie przejdzie.`);
         const suggestEmbed = new Discord.RichEmbed()
         //.setColor("9f59d9")
@@ -649,8 +649,8 @@ bot.on("message", async message => {
         .setFooter(`Sugestia wysłana przez ${message.author.tag}.`);
         //message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
         let propozycja = await message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
-        propozycja.react("heavy_check_mark");
-        propozycja.react("x");
+        //propozycja.react("heavy_check_mark");
+        //propozycja.react("x");
         message.channel.send(`**(!)** Twoja propozycja została pomyślnie wysłana.`)
     }
 
