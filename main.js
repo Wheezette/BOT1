@@ -642,7 +642,7 @@ bot.on("message", async message => {
         let suggestContent = args.join(" ");
         if(!args[0]) return message.channel.send(`**(!)** Musisz podać treść propozycji, inaczej nie przejdzie.`);
         const suggestEmbed = new Discord.RichEmbed()
-        .setColor("9f59d9")
+        //.setColor("9f59d9")
         //.setAuthor("[SUGESTIA]")
         //.addField("Treść:", suggestContent)
         .setFooter(`Sugestia wysłana przez ${message.author.tag}.`);
