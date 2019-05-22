@@ -643,8 +643,8 @@ bot.on("message", async message => {
         if(!args[0]) return message.channel.send(`**(!)** Musisz podać treść propozycji, inaczej nie przejdzie.`)
         const suggestEmbed = new Discord.RichEmbed()
         .setColor("9f59d9")
-        .setAuthor("[SUGESTIA]")
-        .addField("Treść:", suggestContent)
+        //.setAuthor("[SUGESTIA]")
+        //.addField("Treść:", suggestContent)
         .setFooter(`Sugestia wysłana przez ${message.author.tag}.`);
         //message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
         let propozycja = await message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
