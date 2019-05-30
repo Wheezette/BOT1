@@ -201,6 +201,12 @@ bot.on("message", async message => {
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Użyto przez ${message.author.tag}.`)
         message.channel.send(userinfo);
     }
+    
+    if(cmd === `${prefix}newdonate`){
+        let aUser = message.mentions.users.first();
+        if(message.author.id !== "396284197389729793") return message.channel.send("**Nie masz dostępu do tej komendy.**");
+        message.channel.send(`**~~-----------------------------------~~**\n \n**Donator:** ${aUser} (${aUser.tag} | ${aUser.id})\n**Kwota:** ${args[1]}\n**Za pomocą:** ${args[2]}`);
+    }
 
     if(cmd === `${prefix}server` || cmd === `${prefix}server-info` || cmd === `${prefix}serverinfo`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
