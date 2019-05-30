@@ -660,23 +660,6 @@ bot.on("message", async message => {
         //message.channel.send(`**(!)** Twoja propozycja została pomyślnie wysłana.`)
     //}
 
-    if(cmd === `${prefix}sugestia` || cmd === `${prefix}propozycja`){
-        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        let suggestContent = args.join(" ");
-        //if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Co chcesz zaproponować? Podaj treść propozycji.`)
-        if(!args[0]) return message.channel.send(`**(!)** Musisz podać treść propozycji, inaczej nie przejdzie.`)
-        const suggestEmbed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        //.setColor("9f59d9")
-        .setDescription(suggestContent)
-        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Propozycja napisana przez ${message.author.tag}.`);
-        //message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
-        let propozycja = await message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
-        propozycja.react(bot.emojis.find(`name`, 'success'));
-        propozycja.react(bot.emojis.find(`name`, 'error'));
-        message.channel.send(`${bot.emojis.find(`name`, 'success')} Propozycja została wysłana!`)
-    } 
-
     if(message.author.id === "396284197389729793"){
         if(cmd === `${prefix}rich`){
           //if(message.author.id !== "396284197389729as93") return message.channel.send("Nie tego!");
