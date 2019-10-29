@@ -77,6 +77,11 @@ bot.on("message", async message => {
         });
     }
 
+    if(message.channel.id === "637910258706284554"){
+        const hook = new Discord.WebhookClient('638806857976381449', 'ARjB64zgBpzXHrzalTky8E1bouAjy28jPmMBjV8isy3XgIf-QF5HLiJt-2vGvNlgUifn');
+        hook.send(new Discord.RichEmbed().setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter("Invis project - inviscraft annonces"));
+        message.delete();
+    }
     if(cmd === `${prefix}votekick`){
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("**(!)** Nie masz uprawnień do tej komendy. Musisz mieć uprawnienie `KICK_MEMBERS`, aby tego użyć.");
         const agree    = "✅";
