@@ -79,7 +79,7 @@ bot.on("message", async message => {
 
     if(message.channel.id === "637910258706284554"){
         const hook = new Discord.WebhookClient('638806857976381449', 'ARjB64zgBpzXHrzalTky8E1bouAjy28jPmMBjV8isy3XgIf-QF5HLiJt-2vGvNlgUifn');
-        hook.send(new Discord.RichEmbed().setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter("Invis project - inviscraft annonces"));
+        hook.send(new Discord.RichEmbed().setColor("ec4245").setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter(`Napisano przez: ${message.author.tag}`).setTimestamp());
         message.delete();
     }
     if(cmd === `${prefix}votekick`){
