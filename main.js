@@ -264,15 +264,15 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}eval`){
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(message.author.id !== '358901906170445835', '396284197389729793') return message.channel.send("**(!)** Nie masz dostępu do tego polecenia. Musisz posiadać uprawnienia `developer` w bocie, sprawdz jakie masz poprzez `cb!permissions`.")
-        if(!args[0]) return message.channel.send("**(!)** Proszę, abyś podał(a) kod, który chcesz evalować. Jeśli nie wiesz o co chodzi, wpisz `cb!help eval`.")
+        if(message.author.id !== '396284197389729793' && message.author.id !== '358908048942825473') return message.channel.send("**(!)** Nie masz uprawnień do tej komendy.\nWymagane uprawnienia: `root`.")
+        if(!args[0]) return message.channel.send("**(!)** Podaj kod źródłowy, aby tego użyć.")
         let result = eval(args.join(" ")).toString()
           let embed = new Discord.RichEmbed()
           //.setTitle("Eval")
-          .addField(`${bot.emojis.find(`name`, 'jsonfile')} Wejście`, "```"+args.join(" ")+"```")
-          .addField(`${bot.emojis.find(`name`, 'txt')} Wyjście`, "```"+result+"```")
+          .addField(`:inbox_tray: Wejście`, "```"+args.join(" ")+"```")
+          .addField(`:outbox_tray: Wyjście`, "```"+result+"```")
           .setColor("RANDOM")
-          .setFooter(`Kod evalował(-a) ${message.author.tag}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
+          .setFooter(`Administrator: ${message.author.tag}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
           message.channel.send(embed);
     }
 
