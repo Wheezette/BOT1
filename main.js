@@ -10,7 +10,7 @@ const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 bot.on('ready', () => {
     console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
     bot.user.setStatus(`dnd`);
-    bot.user.setActivity(`2k18`, {type: "WATCHING"});
+    bot.user.setActivity(`InvisCraft.net`, {type: "WATCHING"});
 });
 
 bot.on("message", async message => {
@@ -36,8 +36,8 @@ bot.on("message", async message => {
 
     let suggestChannel = suggestChannels[message.guild.id].suggestChannels;
 
-    let prefix = prefixes[message.guild.id].prefixes;
-    //let prefix = konfiguracja.prefix;
+    //let prefix = prefixes[message.guild.id].prefixes;
+    let prefix = "!";
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let msg = message.content.startsWith;
