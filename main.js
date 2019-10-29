@@ -572,7 +572,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}clear`){
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " AaaAaa... Nie masz uprawnień. Dodatkowo wymagane jest uprawnienie `MANAGE_MESSAGES`, bo inaczej komenda nie zadziała.");
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Woah... Nie masz uprawnień. Dodatkowo wymagane jest uprawnienie `MANAGE_MESSAGES`, bo inaczej komenda nie zadziała.");
     
         let messagecount = parseInt(args.join(' '));
         message.channel.fetchMessages({
@@ -693,9 +693,9 @@ bot.on("message", async message => {
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Propozycja napisana przez ${message.author.tag}.`);
         //message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
         let propozycja = await message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
-        propozycja.react(bot.emojis.find(`name`, 'success'));
-        propozycja.react(bot.emojis.find(`name`, 'error'));
-        message.channel.send(`${bot.emojis.find(`name`, 'success')} Propozycja została wysłana!`)
+        propozycja.react(":thumbsup:");
+        propozycja.react(":thumbsdown:");
+        message.channel.send(`Twoja propozycja została wysłana na kanał <#638789361512480768>. Gracze mogą oddać swój głos poprzez kliknięcie odpowiedniej dla nich reakcji.`)
     } 
 
     if(cmd === `${prefix}ticket`){
