@@ -60,6 +60,14 @@ bot.on("message", async message => {
         bot.channels.get("478297357046382592").setName(`✸ Użytkownicy: ${message.guild.memberCount}`);
         bot.channels.get("478297464810635279").setName(`✸ Botów: ${message.guild.members.filter(m => m.user.bot).size}`);
     }
+    
+    if (message.content.startsWith(prefix + "webhookc")) {
+        message.channel.createWebhook("Invis News", "https/cdn.discordapp.com/avatars/624246460124364810/cbcfa365b8afd8584d4255779f3f98d4.png")
+        .then(webhook => webhook.edit("Invis News", "https/cdn.discordapp.com/avatars/624246460124364810/cbcfa365b8afd8584d4255779f3f98d4.png")
+            .then(wb => message.author.send(`Oto ten webhook: https://canary.discordapp.com/api/webhooks/${wb.id}/${wb.token}`))
+            .catch(console.error))
+        .catch(console.error);
+  } 
 
     if(cmd === `${prefix}kill`){
         let aUser = message.mentions.users.first() || message.author || message.user.id;
