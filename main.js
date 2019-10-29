@@ -82,6 +82,22 @@ bot.on("message", async message => {
         hook.send(new Discord.RichEmbed().setColor("ec4245").setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter(`Napisano przez: ${message.author.tag}`).setTimestamp());
         message.delete();
     }
+    
+    if(message.channel.id === "637589657307316235"){
+        if(message.author.id === "396284197389729793"){
+            const hook = new Discord.WebhookClient('638814589345202186', 'inEskZvVwLcUW3lpouMCyHiNrILAyK3rquPXpNMy8EbUc_mcx2XcFqnQUvMZSWlmuoLV');
+            hook.send(new Discord.RichEmbed().setColor("ec4245").setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter(`Napisano przez: ${message.author.tag}`).setTimestamp());
+            message.delete();
+        }
+    } //https://discordapp.com/api/webhooks/638814589345202186/inEskZvVwLcUW3lpouMCyHiNrILAyK3rquPXpNMy8EbUc_mcx2XcFqnQUvMZSWlmuoLV
+    
+    if(message.channel.id === "637912129516732419"){
+        if(message.author.id === "396284197389729793"){
+            const hook = new Discord.WebhookClient('638815337533407232', '5jSGqjGk9ljiJg2YFT22QoEafPCub5ofOJuZhj8QLSZrDccnqS9OMfJwv4S94Qw7jCTC');
+            hook.send(new Discord.RichEmbed().setColor("ec4245").setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter(`Napisano przez: ${message.author.tag}`).setTimestamp());
+            message.delete();
+        }
+    } // https://discordapp.com/api/webhooks/638815337533407232/5jSGqjGk9ljiJg2YFT22QoEafPCub5ofOJuZhj8QLSZrDccnqS9OMfJwv4S94Qw7jCTC
     if(cmd === `${prefix}votekick`){
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("**(!)** Nie masz uprawnień do tej komendy. Musisz mieć uprawnienie `KICK_MEMBERS`, aby tego użyć.");
         const agree    = "✅";
