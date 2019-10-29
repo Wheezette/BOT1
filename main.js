@@ -86,7 +86,7 @@ bot.on("message", async message => {
     if(message.channel.id === "637589657307316235"){
         if(message.author.id === "396284197389729793"){
             const hook = new Discord.WebhookClient('638814589345202186', 'inEskZvVwLcUW3lpouMCyHiNrILAyK3rquPXpNMy8EbUc_mcx2XcFqnQUvMZSWlmuoLV');
-            hook.send(new Discord.RichEmbed().setColor("ec4245").setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter(`Napisano przez: ${message.author.tag}`).setTimestamp());
+            hook.send(message.content);
             message.delete();
         }
     } //https://discordapp.com/api/webhooks/638814589345202186/inEskZvVwLcUW3lpouMCyHiNrILAyK3rquPXpNMy8EbUc_mcx2XcFqnQUvMZSWlmuoLV
@@ -94,7 +94,7 @@ bot.on("message", async message => {
     if(message.channel.id === "637912129516732419"){
         if(message.author.id === "396284197389729793"){
             const hook = new Discord.WebhookClient('638815337533407232', '5jSGqjGk9ljiJg2YFT22QoEafPCub5ofOJuZhj8QLSZrDccnqS9OMfJwv4S94Qw7jCTC');
-            hook.send(new Discord.RichEmbed().setColor("ec4245").setAuthor("Ogłoszenie", bot.user.displayAvatarURL).setDescription(message.content).setFooter(`Napisano przez: ${message.author.tag}`).setTimestamp());
+            hook.send(message.content);
             message.delete();
         }
     } // https://discordapp.com/api/webhooks/638815337533407232/5jSGqjGk9ljiJg2YFT22QoEafPCub5ofOJuZhj8QLSZrDccnqS9OMfJwv4S94Qw7jCTC
