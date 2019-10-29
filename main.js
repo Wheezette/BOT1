@@ -693,8 +693,8 @@ bot.on("message", async message => {
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | Propozycja napisana przez ${message.author.tag}.`);
         //message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
         let propozycja = await message.guild.channels.find(`name`, `${suggestChannel}`).send(suggestEmbed);
-        propozycja.react(":thumbsup:");
-        propozycja.react(":thumbsdown:");
+        propozycja.react("thumbsup");
+        propozycja.react("thumbsdown");
         message.channel.send(`Twoja propozycja została wysłana na kanał <#638789361512480768>. Gracze mogą oddać swój głos poprzez kliknięcie odpowiedniej dla nich reakcji.`)
     } 
 
