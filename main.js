@@ -295,7 +295,7 @@ bot.on("message", async message => {
 
     if(cmd === `${prefix}eval`){
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(message.author.id !== '396284197389729793' && message.author.id !== '358908048942825473') return message.channel.send("**(!)** Nie masz uprawnień do tej komendy.\nWymagane uprawnienia: `root`.")
+        if(message.author.id !== '646073962941644832') return message.channel.send("**(!)** Nie masz uprawnień do tej komendy.\nWymagane uprawnienia: `root`.")
         if(!args[0]) return message.channel.send("**(!)** Podaj kod źródłowy, aby tego użyć.")
         let result = eval(args.join(" ")).toString()
           let embed = new Discord.RichEmbed()
