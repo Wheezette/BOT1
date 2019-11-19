@@ -10,7 +10,7 @@ const warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 bot.on('ready', () => {
     console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
     bot.user.setStatus(`dnd`);
-    bot.user.setActivity(`Quierra Projects`, {type: "WATCHING"});
+    bot.user.setActivity(`Klasa 1TPJ`, {type: "WATCHING"});
 });
 
 bot.on("message", async message => {
@@ -56,9 +56,14 @@ bot.on("message", async message => {
         message.channel.send(x + y);
     }
     
-    if(cmd === `${prefix}statsrefresh`){
-        bot.channels.get("478297357046382592").setName(`✸ Użytkownicy: ${message.guild.memberCount}`);
-        bot.channels.get("478297464810635279").setName(`✸ Botów: ${message.guild.members.filter(m => m.user.bot).size}`);
+    if(message.channel.id === "646467716143906816"){
+        let imie = ["Sebastian", "Krystian", "Jakub", "Jan", "Bartosz", "Bartek", "Kuba", "Krytian", "Hubert", "Michał", "Wiktor", "Marek", "Kacper", "Olaf", "Patryk", "Piotrek", "Piotr"];
+        if(message.content !== imie){
+            message.channel.send("niepoprawne imię");
+        } else {
+            message.channel.send("wszystko poprawne!");
+        } //bot.channels.get("478297357046382592").setName(`✸ Użytkownicy: ${message.guild.memberCount}`);
+        //bot.channels.get("478297464810635279").setName(`✸ Botów: ${message.guild.members.filter(m => m.user.bot).size}`);
     }
     
     if (message.content.startsWith(prefix + "webhookc")) {
