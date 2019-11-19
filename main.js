@@ -58,7 +58,19 @@ bot.on("message", async message => {
     
     if(message.channel.id === "646467716143906816"){
         let imie = ["Sebastian", "Krystian", "Jakub", "Jan", "Bartosz", "Bartek", "Kuba", "Krytian", "Hubert", "Michał", "Wiktor", "Marek", "Kacper", "Olaf", "Patryk", "Piotrek", "Piotr"];
-        if(message.content !== imie){
+        let a = "Sebastian";
+        let b = "Krystian";
+        let c = "Jakub";
+        let d = "Jan";
+        let e = "Bartosz";
+        let f = "Bartek";
+        let g = "Kuba";
+        let h = "Krytian";
+        let i = "Hubert";
+        let j = "Michał";
+        let k = "Wiktor";
+        let l = "Marek";
+        if(message.content !== a && message.content !== b && message.content !== c && message.content !== d && message.content !== e && message.content !== f && message.content !== g && message.content !== h && message.content !== i && message.content !== j && message.content !== k && message.content !== l){
             message.channel.send("niepoprawne imię");
         } else {
             message.channel.send("wszystko poprawne!");
