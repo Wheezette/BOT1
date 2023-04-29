@@ -4,7 +4,7 @@
   "description": "cookiebot",
   "main": "main.js",
   "dependencies": {
-    "ascii-art": "^1.4.3",
+    "ascii-art": "^1.5.1",
     "discord.js": "^11.4.0",
     "moment": "^2.22.2",
     "ms": "^2.1.1"
